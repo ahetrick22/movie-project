@@ -1,5 +1,5 @@
 // prod.js - production keys here!!
 module.exports = {
-  mongoURI: process.env.MONGO_URI,
-  tokenSecret: process.env.COOKIE_KEY
+  MONGODB_URI: process.env.MONGO_URI,
+  TOKEN_SECRET: process.env.COOKIE_KEY
 };
