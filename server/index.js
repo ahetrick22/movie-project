@@ -6,9 +6,13 @@ const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const keys = require('./config/keys');
 
 // DB Setup
 mongoose.connect('mongodb://localhost/movie-finder');
+mongoose.connect('mongodb://localhost/movie-finder');
+mongoose.connect(keys.mongoURI);
+
 
 // App Setup
 app.use(morgan('combined'));
