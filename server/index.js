@@ -9,8 +9,6 @@ const cors = require('cors');
 const keys = require('./config/keys');
 
 // DB Setup
-mongoose.connect('mongodb://localhost/movie-finder');
-mongoose.connect('mongodb://localhost/movie-finder');
 mongoose.connect(keys.MONGODB_URI);
 
 
