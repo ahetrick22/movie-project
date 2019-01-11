@@ -7,24 +7,16 @@ import App from './components/App';
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
 import rootReducer from "./reducers/index";
-import { composeWithDevTools } from "redux-devtools-extension";
 import MovieList from './components/MovieList'
 import MovieDetail from './components/MovieDetail'
 import Signup from './components/auth/Signup';
 import Signin from './components/auth/Signin';
 
-const configureStore = () => {
-  return createStore(
-    rootReducer,
-    {},
-    composeWithDevTools(applyMiddleware(thunk, logger))
-  );
-}
+const store = createStore(rootReducer, {}, applyMiddleware(thunk));
 
 render(
-  <Provider store={configureStore()}>
+  <Provider store={store}>
     <Router>
       <Fragment>
         <Nav />

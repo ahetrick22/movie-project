@@ -1,7 +1,6 @@
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
@@ -11,11 +10,10 @@ const keys = require('./config/keys');
 // DB Setup
 mongoose.connect(keys.MONGODB_URI);
 
-
-// App Setup
-app.use(morgan('combined'));
 app.use(cors());
-app.use(bodyParser.json({ type: '*/*' }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 router(app);
 
 if (process.env.NODE_ENV === 'production') {

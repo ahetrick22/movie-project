@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import styled from "styled-components";
 import * as actions from '../actions';
 
-const Nav = ({ authenticated, email, signout, watchListCount }) => {
-  //TODO: fetch watchList from API when this loads
-
+const Nav = ({ authenticated, email, signout }) => {
   const handleSignOutClick = () => {
     signout();
   };
@@ -16,7 +14,6 @@ const Nav = ({ authenticated, email, signout, watchListCount }) => {
       return (
         <React.Fragment>
           <li>{email}</li>
-          <li>My Watch List: {watchListCount}</li>
           <li><a href="#" onClick={handleSignOutClick}>Sign Out</a></li>
         </React.Fragment>
       );
@@ -35,14 +32,13 @@ const Nav = ({ authenticated, email, signout, watchListCount }) => {
     <NavContainer>
       <div id="logo">
         <NavLink to="/">
+          MovieFinder
         </NavLink>
       </div>
+
+  
       <NavUl>
-        <li>
-          <NavLink to="/">
-            Discover
-          </NavLink>
-        </li>
+
         {renderLinks()}
       </NavUl>
     </NavContainer>
@@ -52,8 +48,7 @@ const Nav = ({ authenticated, email, signout, watchListCount }) => {
 function mapStateToProps(state) {
   return {
     authenticated: state.auth.authenticated,
-    email: state.auth.email,
-    watchListCount: state.watch_list.length
+    email: state.auth.email
   };
 }
 
@@ -73,6 +68,9 @@ const NavContainer = styled.div`
     float: left;
     width: 150px;
     height: auto;
+  }
+  a {
+    color: #fff;
   }
 `;
 
